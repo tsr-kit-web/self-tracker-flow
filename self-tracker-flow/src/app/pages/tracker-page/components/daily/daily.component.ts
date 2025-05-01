@@ -190,23 +190,17 @@ export class DailyComponent implements OnInit, OnDestroy {
       this.fb.group({
         name: 'Cognitive',
         subItems: this.fb.array(
-          [
-            'Coding',
-            'Hardworking/Contribution',
-            'Eng',
-            'Learning',
-          ].map((name) => this.createSubItem(name)),
+          ['Coding', 'Hardworking/Contribution', 'Eng', 'Learning'].map(
+            (name) => this.createSubItem(name),
+          ),
         ),
       }),
       this.fb.group({
         name: 'Social',
         subItems: this.fb.array(
-          [
-            'Family time',
-            'Household (S)',
-            'Friend',
-            'Communities',
-          ].map((name) => this.createSubItem(name)),
+          ['Family time', 'Household (S)', 'Friend', 'Communities'].map(
+            (name) => this.createSubItem(name),
+          ),
         ),
       }),
     ];
@@ -370,20 +364,20 @@ export class DailyComponent implements OnInit, OnDestroy {
     const healthPercentage = this.calculateParentPercentage(0);
     const cognitivePercentage = this.calculateParentPercentage(1);
     const socialPercentage = this.calculateParentPercentage(2);
-  
+
     const globalPercentage = this.calculateGlobalPercentage();
-  
+
     this.clipboardText = `EDF: ${globalPercentage}% - H: ${healthPercentage}%, C: ${cognitivePercentage}%; S: ${socialPercentage}%;`;
-  
+
     const gapsBody = this.gapsList
       .map((parent) => {
         const gapItems = parent.items.join(', ');
         return `${parent.parentName}: ${gapItems}`;
       })
       .join('\n');
-  
+
     const fullReportText = `${this.clipboardText}\nGaps List\n${gapsBody}`;
-  
+
     navigator.clipboard
       .writeText(fullReportText)
       .then(() => console.log('Report copied to clipboard!'))

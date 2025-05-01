@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../shared/models/user';
-import {
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UserInfoComponent } from '../../shared/layouts/user-info/user-info.component';
 import { DailyComponent } from './components/daily/daily.component';
@@ -22,7 +20,7 @@ import { ProductiveComponent } from './components/productive/productive.componen
     WeeklyComponent,
     MonthlyComponent,
     YearlyComponent,
-    ProductiveComponent
+    ProductiveComponent,
   ],
   templateUrl: './tracker-page.component.html',
   styleUrl: './tracker-page.component.scss',
@@ -32,9 +30,7 @@ export class TrackerPageComponent implements OnInit {
 
   selectedTabIndex = 0;
 
-  constructor(
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.user = this.route.parent?.snapshot.data['user'];

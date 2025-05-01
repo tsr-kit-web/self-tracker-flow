@@ -1,6 +1,11 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../../../../shared/models/user';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Subject, takeUntil, tap, timer } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,19 +21,19 @@ import { MatBadgeModule } from '@angular/material/badge';
   selector: 'stf-productive',
   standalone: true,
   imports: [
-        ReactiveFormsModule,
-        CommonModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        MatCardModule,
-        MatExpansionModule,
-        MatSnackBarModule,
-        MatProgressBarModule,
-        MatTabsModule,
-        MatBadgeModule,
+    ReactiveFormsModule,
+    CommonModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+    MatTabsModule,
+    MatBadgeModule,
   ],
   templateUrl: './productive.component.html',
-  styleUrl: './productive.component.scss'
+  styleUrl: './productive.component.scss',
 })
 export class ProductiveComponent implements OnInit, OnDestroy {
   @Input({ required: true }) user: User | null = null;
@@ -71,21 +76,18 @@ export class ProductiveComponent implements OnInit, OnDestroy {
     const start = this.getMinutesSinceMidnight(8, 30);
     const end = this.getMinutesSinceMidnight(19, 0);
     const now = this.getMinutesSinceMidnightNow();
-  
+
     const total = end - start;
     const passed = now - start;
-  
-    this.workdayProgress = now < start
-      ? 0
-      : now > end
-        ? 100
-        : Math.round((passed / total) * 100);
+
+    this.workdayProgress =
+      now < start ? 0 : now > end ? 100 : Math.round((passed / total) * 100);
   }
 
   private getMinutesSinceMidnight(hour: number, minute: number): number {
     return hour * 60 + minute;
   }
-  
+
   private getMinutesSinceMidnightNow(): number {
     const now = new Date();
     return now.getHours() * 60 + now.getMinutes();
@@ -356,11 +358,9 @@ export class ProductiveComponent implements OnInit, OnDestroy {
   }
 
   copyReportToClipboard(): void {
-
     const globalPercentage = this.calculateGlobalPercentage();
 
     this.clipboardText = `EDP: ${globalPercentage}%`;
-
 
     const gapsBody = this.gapsList
       .map((parent) => {
@@ -370,7 +370,6 @@ export class ProductiveComponent implements OnInit, OnDestroy {
       .join('\n\n');
 
     const fullReportText = `${this.clipboardText}\n\nGaps List\n${gapsBody}`;
-
 
     navigator.clipboard
       .writeText(fullReportText)

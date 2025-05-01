@@ -120,7 +120,6 @@ export class WeeklyComponent implements OnInit, OnDestroy {
   updateParentPercentage(itemIndex: number, j: number): void {
     const key = `${itemIndex}-${j}`;
     if (this.badgeVisibility[key]) {
-
       this.badgeVisibility[key] = false;
       this.saveBadgeVisibility();
     }
@@ -167,7 +166,11 @@ export class WeeklyComponent implements OnInit, OnDestroy {
       this.fb.group({
         name: 'Cognitive',
         subItems: this.fb.array(
-          ['Prof Insights (<=2)', 'Eng Vac. Review highlighted', 'Repeat: Listen + Draw/Code'].map((name) => this.createSubItem(name)),
+          [
+            'Prof Insights (<=2)',
+            'Eng Vac. Review highlighted',
+            'Repeat: Listen + Draw/Code',
+          ].map((name) => this.createSubItem(name)),
         ),
       }),
       this.fb.group({
@@ -179,9 +182,7 @@ export class WeeklyComponent implements OnInit, OnDestroy {
       this.fb.group({
         name: 'Material',
         subItems: this.fb.array(
-          ['Tools, theory, etc..'].map((name) =>
-            this.createSubItem(name),
-          ),
+          ['Tools, theory, etc..'].map((name) => this.createSubItem(name)),
         ),
       }),
     ];

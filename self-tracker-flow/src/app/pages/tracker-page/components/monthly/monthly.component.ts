@@ -196,7 +196,9 @@ export class MonthlyComponent implements OnInit, OnDestroy {
       this.fb.group({
         name: 'Health',
         subItems: this.fb.array(
-          ['Review & Summarize Notes + Action Items'].map((name) => this.createSubItem(name)),
+          ['Review & Summarize Notes + Action Items'].map((name) =>
+            this.createSubItem(name),
+          ),
         ),
       }),
       this.fb.group({

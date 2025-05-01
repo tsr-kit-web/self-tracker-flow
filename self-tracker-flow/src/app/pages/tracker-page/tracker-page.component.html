@@ -1,6 +1,9 @@
 <stf-user-info [user]="user"></stf-user-info>
 
-<mat-tab-group [(selectedIndex)]="selectedTabIndex" (selectedIndexChange)="onTabChange($event)">
+<mat-tab-group
+  [(selectedIndex)]="selectedTabIndex"
+  (selectedIndexChange)="onTabChange($event)"
+>
   <mat-tab label="Daily">
     <stf-daily [user]="user"></stf-daily>
   </mat-tab>

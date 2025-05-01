@@ -44,7 +44,7 @@ module.exports = tseslint.config(
           "allow": ["arrowFunctions", "functions"]
         }
       ],
-      "@typescript-eslint/no-explicit-any": "warn"
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
   {

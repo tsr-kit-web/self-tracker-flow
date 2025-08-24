@@ -16,6 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
+import { TimerComponent } from '../../../../shared/components/timer/timer.component';
 
 @Component({
   selector: 'stf-productive',
@@ -31,6 +32,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatProgressBarModule,
     MatTabsModule,
     MatBadgeModule,
+    TimerComponent,
   ],
   templateUrl: './productive.component.html',
   styleUrl: './productive.component.scss',
@@ -375,5 +377,35 @@ export class ProductiveComponent implements OnInit, OnDestroy {
       .writeText(fullReportText)
       .then(() => console.log('Report copied to clipboard!'))
       .catch((err) => console.error('Failed to copy report:', err));
+  }
+
+  onTimerComplete(event: { name: string; completionTime: string }) {
+    console.log(`${event.name} completed at ${event.completionTime}`);
+
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('Timer Completed', {
+        body: `${event.name}: Time is up at ${event.completionTime}`,
+      });
+    }
+  }
+
+  activeTimerKey: string | null = null;
+
+  onTimerStart(timerKey: string) {
+    this.activeTimerKey = timerKey;
+  }
+
+  onTimerPause(timerKey: string) {
+    if (this.activeTimerKey === timerKey) {
+      this.activeTimerKey = null;
+    }
+  }
+
+  isTimerDisabled(timerKey: string): boolean {
+    return this.activeTimerKey !== null && this.activeTimerKey !== timerKey;
+  }
+
+  isTimerActive(timerKey: string): boolean {
+    return this.activeTimerKey === timerKey;
   }
 }

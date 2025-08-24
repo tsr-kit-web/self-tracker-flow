@@ -1,22 +1,25 @@
 <stf-user-info [user]="user"></stf-user-info>
 
-<mat-tab-group
-  [(selectedIndex)]="selectedTabIndex"
-  (selectedIndexChange)="onTabChange($event)"
->
-  <mat-tab label="Daily">
-    <stf-daily [user]="user"></stf-daily>
-  </mat-tab>
-  <mat-tab label="Productive">
-    <stf-productive [user]="user"></stf-productive>
-  </mat-tab>
-  <mat-tab label="Weekly">
-    <stf-weekly [user]="user"></stf-weekly>
-  </mat-tab>
-  <mat-tab label="Monthly">
-    <stf-monthly [user]="user"></stf-monthly>
-  </mat-tab>
-  <mat-tab label="Yearly">
-    <stf-yearly [user]="user"></stf-yearly>
-  </mat-tab>
-</mat-tab-group>
+@if (workMood === WorkMood.Home) {
+  <mat-tab-group
+    [(selectedIndex)]="selectedTabIndex"
+    (selectedIndexChange)="onTabChange($event)"
+  >
+    <mat-tab label="Daily">
+      <stf-daily [user]="user"></stf-daily>
+    </mat-tab>
+    <mat-tab label="Weekly">
+      <stf-weekly [user]="user"></stf-weekly>
+    </mat-tab>
+    <mat-tab label="Monthly">
+      <stf-monthly [user]="user"></stf-monthly>
+    </mat-tab>
+    <mat-tab label="Yearly">
+      <stf-yearly [user]="user"></stf-yearly>
+    </mat-tab>
+  </mat-tab-group>
+}
+
+@if (workMood === WorkMood.Work) {
+  <stf-productive [user]="user"></stf-productive>
+}

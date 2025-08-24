@@ -9,6 +9,10 @@ import { WeeklyComponent } from './components/weekly/weekly.component';
 import { MonthlyComponent } from './components/monthly/monthly.component';
 import { YearlyComponent } from './components/yearly/yearly.component';
 import { ProductiveComponent } from './components/productive/productive.component';
+import {
+  HomeToggleService,
+  WorkMood,
+} from '../../shared/services/home-toggle.service';
 @Component({
   selector: 'stf-tracker-page',
   standalone: true,
@@ -30,12 +34,22 @@ export class TrackerPageComponent implements OnInit {
 
   selectedTabIndex = 0;
 
-  constructor(private route: ActivatedRoute) {}
+  workMood!: WorkMood;
+  WorkMood = WorkMood;
+
+  constructor(
+    private route: ActivatedRoute,
+    private homeToggleService: HomeToggleService,
+  ) {}
 
   ngOnInit(): void {
     this.user = this.route.parent?.snapshot.data['user'];
     const savedIndex = localStorage.getItem('selectedTabIndex');
     this.selectedTabIndex = savedIndex ? +savedIndex : 0;
+
+    this.homeToggleService.workMood$.subscribe((mood: WorkMood) => {
+      this.workMood = mood;
+    });
   }
 
   onTabChange(index: number): void {

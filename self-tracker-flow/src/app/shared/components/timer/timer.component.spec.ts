@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductiveComponent } from './productive.component';
+import { TimerComponent } from './timer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('ProductiveComponent', () => {
-  let component: ProductiveComponent;
-  let fixture: ComponentFixture<ProductiveComponent>;
+describe('TimerComponent', () => {
+  let component: TimerComponent;
+  let fixture: ComponentFixture<TimerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductiveComponent, BrowserAnimationsModule],
+      imports: [TimerComponent, BrowserAnimationsModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ProductiveComponent);
+    fixture = TestBed.createComponent(TimerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

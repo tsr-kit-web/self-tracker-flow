@@ -1,0 +1,17 @@
+:host ::ng-deep {
+  .mdc-tab__text-label {
+    color: var(--text-primary) !important;
+  }
+
+  .mat-mdc-card {
+    background: var(--bg-primary) !important;
+  }
+
+  .mdc-label {
+    color: var(--text-primary) !important;
+  }
+
+  .mdc-checkbox__background {
+    border-color: var(--checkbox) !important;
+  }
+}

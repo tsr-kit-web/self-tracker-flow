@@ -1,0 +1,115 @@
+<div class="timer-container">
+  <div
+    class="timer-card"
+    [class.timer-disabled]="isDisabled && !showCompletionMessage"
+    [class.timer-active]="isActive"
+    [ngClass]="{ green: showCompletionMessage }"
+  >
+    <div class="timer-header">
+      <div class="timer-title">
+        <h2 class="timer-name">{{ timerName }}</h2>
+        <span
+          class="timer-status"
+          [class.active]="isActive"
+          [class.disabled]="isDisabled"
+        >
+          {{ statusText }}
+        </span>
+      </div>
+      <button
+        mat-icon-button
+        (click)="clearStorage()"
+        matTooltip="Clear saved state"
+        [disabled]="isDisabled"
+      >
+        delete
+      </button>
+    </div>
+
+    <div *ngIf="showCompletionMessage" class="completion-message">
+      <div class="message-content">
+        <div class="message-text">
+          {{ timerName }}: Time is up at <strong>{{ completionTime }}</strong>
+        </div>
+        <button
+          mat-icon-button
+          (click)="showCompletionMessage = false"
+          class="close-btn"
+        >
+          close
+        </button>
+      </div>
+    </div>
+
+    <div class="timer-display">
+      <div class="time-text">{{ formattedTime }}</div>
+      <div class="timer-progress">
+        <div class="progress-bar" [style.width.%]="progressPercentage"></div>
+      </div>
+    </div>
+
+    <div class="timer-controls">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="startTimer()"
+        [disabled]="isRunning || !hasTime() || isDisabled"
+      >
+        Start
+      </button>
+
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="pauseTimer()"
+        [disabled]="!isRunning"
+      >
+        Pause
+      </button>
+
+      <button
+        mat-raised-button
+        color="basic"
+        (click)="resetTimer()"
+        [disabled]="isDisabled"
+      >
+        Reset
+      </button>
+    </div>
+
+    <div class="timer-set" [formGroup]="timerForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Hours</mat-label>
+        <input
+          matInput
+          type="number"
+          min="0"
+          max="23"
+          formControlName="hours"
+          [disabled]="isDisabled"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Minutes</mat-label>
+        <input
+          matInput
+          type="number"
+          min="0"
+          max="59"
+          formControlName="minutes"
+          [disabled]="isDisabled"
+        />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="setTimer()"
+        [disabled]="!timerForm.valid || isDisabled"
+      >
+        Set Timer
+      </button>
+    </div>
+  </div>
+</div>

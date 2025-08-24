@@ -1,0 +1,198 @@
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  padding: 20px;
+}
+
+.timer-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  color: white;
+  min-width: 315px;
+  position: relative;
+}
+
+.timer-display {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.time-text {
+  font-size: 3.5rem;
+  font-weight: 300;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.timer-progress {
+  background: rgba(255, 255, 255, 0.2);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #ff9e7d);
+  transition: width 1s ease;
+  border-radius: 3px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.timer-controls button {
+  min-width: 100px;
+  border-radius: 25px;
+  font-weight: 500;
+}
+
+.timer-controls button mat-icon {
+  margin-right: 5px;
+}
+
+.timer-set {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.timer-set mat-form-field {
+  width: 80px;
+}
+
+.timer-set input {
+  text-align: center;
+  color: white;
+}
+
+.timer-set ::ng-deep .mat-form-field-outline {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.timer-set ::ng-deep .mat-form-field-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.timer-set ::ng-deep .mat-input-element {
+  color: white !important;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .timer-card {
+    min-width: unset;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .time-text {
+    font-size: 2.5rem;
+  }
+
+  .timer-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timer-controls button {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .timer-set {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timer-set mat-form-field {
+    width: 100px;
+  }
+}
+
+/* Timer Header */
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.timer-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+/* Statistics */
+.timer-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.timer-stats mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .timer-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .timer-name {
+    font-size: 1.3rem;
+  }
+
+  .timer-stats {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+.green {
+  background: #38a166;
+}
+
+.timer-status {
+  font-size: small;
+  font-style: italic;
+}
+
+.timer-disabled {
+  background: linear-gradient(146deg, #b0b0b0 0%, #424242 100%);
+}
+
+.timer-active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.completion-message {
+  position: absolute;
+  top: 143px;
+}

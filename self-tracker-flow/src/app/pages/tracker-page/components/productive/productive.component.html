@@ -9,6 +9,33 @@
     </mat-progress-bar>
     <p>{{ workdayProgress }}% of workday completed</p>
   </mat-card>
+  <div class="timers">
+    <stf-timer
+      [defaultHours]="6"
+      [defaultMinutes]="0"
+      [timerName]="'Dev'"
+      [storageKey]="'Dev'"
+      (timerComplete)="onTimerComplete($event)"
+      [isDisabled]="isTimerDisabled('Dev')"
+      [isActive]="isTimerActive('Dev')"
+      (timerStart)="onTimerStart($event)"
+      (timerPause)="onTimerPause($event)"
+    >
+    </stf-timer>
+
+    <stf-timer
+      [defaultHours]="0"
+      [defaultMinutes]="30"
+      [timerName]="'Manage'"
+      [storageKey]="'Manage'"
+      (timerComplete)="onTimerComplete($event)"
+      [isDisabled]="isTimerDisabled('Manage')"
+      [isActive]="isTimerActive('Manage')"
+      (timerStart)="onTimerStart($event)"
+      (timerPause)="onTimerPause($event)"
+    >
+    </stf-timer>
+  </div>
   <mat-card>
     <strong> Result: {{ calculateGlobalPercentage() }}%</strong>
   </mat-card>

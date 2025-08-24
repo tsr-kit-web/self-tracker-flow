@@ -1,6 +1,30 @@
-<div class="user-info">
-  @if (photoURL) {
-    <img src="{{ photoURL }}" alt="user photo" />
-  }
-  <p>{{ user?.displayName }}</p>
-</div>
+<header class="header">
+  <div class="user-info">
+    @if (photoURL) {
+      <img src="{{ photoURL }}" alt="user photo" />
+    }
+    <p>{{ user?.displayName }}</p>
+  </div>
+  <div class="mood-toggle-section">
+    <mat-button-toggle-group
+      [value]="workMood"
+      (change)="onWorkMoodChange($event.value)"
+      aria-label="Work Mood Selection"
+      class="mood-toggle-group"
+    >
+      <mat-button-toggle value="work" class="work-toggle">
+        <span class="toggle-content">
+          <span class="emoji">💼</span>
+          Work
+        </span>
+      </mat-button-toggle>
+
+      <mat-button-toggle value="home" class="relax-toggle">
+        <span class="toggle-content">
+          <span class="emoji">🏠</span>
+          Home
+        </span>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</header>

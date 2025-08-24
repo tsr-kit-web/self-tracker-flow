@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimerComponent } from './timer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TimerComponent', () => {
   let component: TimerComponent;
@@ -8,7 +9,7 @@ describe('TimerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TimerComponent],
+      imports: [TimerComponent, BrowserAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TimerComponent);

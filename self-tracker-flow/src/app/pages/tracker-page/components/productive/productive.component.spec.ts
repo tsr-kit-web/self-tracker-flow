@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductiveComponent } from './productive.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ProductiveComponent', () => {
   let component: ProductiveComponent;
@@ -8,7 +9,7 @@ describe('ProductiveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductiveComponent],
+      imports: [ProductiveComponent, BrowserAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductiveComponent);

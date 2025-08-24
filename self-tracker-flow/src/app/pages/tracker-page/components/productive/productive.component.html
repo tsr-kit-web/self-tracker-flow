@@ -35,6 +35,32 @@
       (timerPause)="onTimerPause($event)"
     >
     </stf-timer>
+
+    <stf-timer
+      [defaultHours]="1"
+      [defaultMinutes]="0"
+      [timerName]="'Learn'"
+      [storageKey]="'Learn'"
+      (timerComplete)="onTimerComplete($event)"
+      [isDisabled]="isTimerDisabled('Learn')"
+      [isActive]="isTimerActive('Learn')"
+      (timerStart)="onTimerStart($event)"
+      (timerPause)="onTimerPause($event)"
+    >
+    </stf-timer>
+
+    <stf-timer
+      [defaultHours]="0"
+      [defaultMinutes]="15"
+      [timerName]="'NPA'"
+      [storageKey]="'NPA'"
+      (timerComplete)="onTimerComplete($event)"
+      [isDisabled]="isTimerDisabled('NPA')"
+      [isActive]="isTimerActive('NPA')"
+      (timerStart)="onTimerStart($event)"
+      (timerPause)="onTimerPause($event)"
+    >
+    </stf-timer>
   </div>
   <mat-card>
     <strong> Result: {{ calculateGlobalPercentage() }}%</strong>
